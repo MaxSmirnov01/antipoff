@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { RegisterRequest, RegisterResponse, Users } from '../types/api';
-
-const BASE_URL = 'https://reqres.in/';
+import { BASE_URL, SUGN_UP, LOG_IN, LIST_USERS } from './urls';
 
 export const api = createApi({
   reducerPath: 'users',
@@ -10,7 +9,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     signUp: builder.mutation<RegisterResponse, RegisterRequest>({
       query: ({ email, password }) => ({
-        url: '/api/register',
+        url: SUGN_UP,
         method: 'POST',
         body: { email, password },
       }),
@@ -18,15 +17,15 @@ export const api = createApi({
     }),
     logIn: builder.mutation<RegisterResponse, RegisterRequest>({
       query: ({ email, password }) => ({
-        url: '/api/login',
+        url: LOG_IN,
         method: 'POST',
         body: { email, password },
       }),
       invalidatesTags: ['Users'],
     }),
-    getUsers: builder.query<Users, void>({
-      query: () => ({
-        url: '/api/users?per_page=8',
+    getUsers: builder.query<Users, number>({
+      query: (pageNumber) => ({
+        url: `${LIST_USERS}${pageNumber}`,
       }),
       providesTags: ['Users'],
     }),
