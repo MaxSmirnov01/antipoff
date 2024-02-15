@@ -1,10 +1,13 @@
 import Header from '../Header';
-import CardBox from '../CardBox';
+import CardBox from '../cards/CardBox';
+import CardHeader from '../cards/CardHeader';
 
 const Main = () => {
   return (
     <>
-      <Header />
+      <Header>
+        <CardHeader />
+      </Header>
       <CardBox />
     </>
   );

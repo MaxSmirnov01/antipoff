@@ -28,13 +28,13 @@ const WrapperTheme = ({ children }: { children: React.ReactNode }) => {
       fontFamily: ['Roboto', 'sans-serif'].join(','),
       h1: {
         fontWeight: 400,
-        '@media (max-width: 690px)': {
+        '@media (max-width: 1000px)': {
           fontSize: '2rem',
         },
       },
       h2: {
         fontWeight: 400,
-        '@media (max-width: 690px)': {
+        '@media (max-width: 1000px)': {
           fontSize: '1rem',
         },
       },
@@ -47,10 +47,10 @@ const WrapperTheme = ({ children }: { children: React.ReactNode }) => {
     breakpoints: {
       values: {
         xs: 0,
-        sm: 690,
-        md: 1010,
-        lg: 1280,
-        xl: 1920,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
       },
     },
   });

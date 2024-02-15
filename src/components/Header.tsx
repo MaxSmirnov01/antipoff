@@ -1,50 +1,34 @@
-import { Box, Typography, Button, useMediaQuery, useTheme, IconButton, Grow } from '@mui/material';
+import { Box, Button, useMediaQuery, useTheme, IconButton, Grow } from '@mui/material';
 import useAuth from '../hooks/useAuth';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-const Header = () => {
+const Header = ({ children }: { children: React.ReactNode }) => {
   const auth = useAuth();
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleClick = () => {
     auth.logOut();
+    localStorage.removeItem('page');
   };
 
   return (
-    <Box component="header">
+    <Box component="header" sx={{ display: 'flex', width: '100%', backgroundColor: '#512689', minHeight: '265px' }}>
       <Box
         sx={{
-          height: '265px',
-          backgroundColor: '#512689',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
           px: isSm ? '16px' : '80px',
+          margin: '0 auto',
+          width: '100%',
           position: 'relative',
+          maxWidth: '1440px',
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            gap: '16px',
-            flexDirection: 'column',
-            textAlign: 'center',
-            color: '#F8F8F8',
-            maxWidth: '846px',
-            height: '137px',
-          }}
-        >
-          <Typography variant="h1" sx={{ fontSize: '64px' }}>
-            Наша команда
-          </Typography>
-          <Typography variant="h2" sx={{ fontSize: '20px' }}>
-            Это опытные специалисты, хорошо разбирающиеся во всех задачах, которые ложатся на их плечи, и умеющие
-            находить выход из любых, даже самых сложных ситуаций.
-          </Typography>
-        </Box>
-        {isSm ? (
-          <Grow in={isSm} style={{ transformOrigin: '0 0 0' }} {...(isSm ? { timeout: 800 } : {})}>
+        {children}
+        {isMd ? (
+          <Grow in={isMd} style={{ transformOrigin: '0 0 0' }} {...(isMd ? { timeout: 800 } : {})}>
             <IconButton
               onClick={handleClick}
               sx={{

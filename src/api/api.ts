@@ -23,13 +23,16 @@ export const api = createApi({
       }),
       invalidatesTags: ['Users'],
     }),
-    getUsers: builder.query<Users, number>({
-      query: (pageNumber) => ({
+    getUsers: builder.query<Users, number | undefined>({
+      query: (pageNumber = 1) => ({
         url: `${LIST_USERS}${pageNumber}`,
       }),
       providesTags: ['Users'],
     }),
   }),
 });
+
+// на будущее
+export const selectUsers = api.endpoints.getUsers.select(1);
 
 export const { useSignUpMutation, useLogInMutation, useGetUsersQuery } = api;
