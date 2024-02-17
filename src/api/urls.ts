@@ -6,4 +6,6 @@ const LOG_IN = `${BASE_URL}api/login`;
 
 const LIST_USERS = `${BASE_URL}api/users?per_page=8&page=`;
 
-export { BASE_URL, SUGN_UP, LOG_IN, LIST_USERS };
+const SINGLE_USER = `${BASE_URL}api/users`;
+
+export { BASE_URL, SUGN_UP, LOG_IN, LIST_USERS, SINGLE_USER };

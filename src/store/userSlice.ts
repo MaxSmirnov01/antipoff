@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type User = {
   id: number;
-  userAvatar: string | null;
+  userAvatar: string;
 };
 
 type initialState = User[];

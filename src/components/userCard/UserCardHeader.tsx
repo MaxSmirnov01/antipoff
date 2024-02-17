@@ -27,7 +27,9 @@ const UserCardHeader = ({ user }: { user: User }) => {
       const file = event.currentTarget.files[0];
       const fileUrl = file ? URL.createObjectURL(file) : null;
 
-      dispatch(setAvatar({ id: user.id, userAvatar: fileUrl }));
+      if (fileUrl) {
+        dispatch(setAvatar({ id: user.id, userAvatar: fileUrl }));
+      }
     }
   };
 

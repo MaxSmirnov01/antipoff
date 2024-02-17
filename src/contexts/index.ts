@@ -1,4 +1,9 @@
 import { createContext } from 'react';
-import type { Auth } from '../types/auth';
+
+type Auth = {
+  loggedIn: boolean;
+  logIn: () => void;
+  logOut: () => void;
+};
 
 export const AuthContext = createContext({} as Auth);

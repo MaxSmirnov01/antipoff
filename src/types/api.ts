@@ -23,3 +23,13 @@ export type Users = {
   total_pages: number;
   data: User[];
 };
+
+export type UserData = {
+  data: User;
+};
+
+export type AddUser = {
+  [key: string]: string;
+};
+
+export type UpdateUser = AddUser;
